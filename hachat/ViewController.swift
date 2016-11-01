@@ -30,9 +30,14 @@ class ViewController: UIViewController{
         
         navigationItem.title = "Ha Chat"
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "chat", style: .plain, target: self, action: #selector(joinChat))
+        
+        
+        
+        
     }
     
-
+    
 }
 
 extension ViewController: LoginButtonDelegate {
@@ -41,16 +46,17 @@ extension ViewController: LoginButtonDelegate {
     }
     
     func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
-        
         getFBProfile()
-        
-        
     }
     
     func joinChat() {
-        let layout = UICollectionViewFlowLayout()
-        let chatlog = ChatLogController(collectionViewLayout: layout)
-        navigationController?.pushViewController(chatlog, animated: true)
+        if AccessToken.current != nil {
+            let layout = UICollectionViewFlowLayout()
+            let chatlog = ChatLogController(collectionViewLayout: layout)
+            navigationController?.pushViewController(chatlog, animated: true)
+        }
+        
+        
     }
     
 }

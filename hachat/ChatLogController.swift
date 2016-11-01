@@ -10,8 +10,8 @@ import UIKit
 import Starscream
 
 class ChatLogController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout {
-    //ws://127.0.0.1:8080 wss://hachatserver.herokuapp.com/
-    var socket = WebSocket(url: URL(string: "ws://127.0.0.1:8080")!)
+    //ws://127.0.0.1:8080 wss://hachatserver.herokuapp.com/hachat
+    var socket = WebSocket(url: URL(string: "ws://127.0.0.1:8080/hachat")!)
     
     lazy var inputContainerView: UIView = {
         let containerView = UIView()
