@@ -1,0 +1,613 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2976787D80EC9AD66A0AE7BA /* Pods_hachat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FC599279E4DFB164A9F4C9 /* Pods_hachat.framework */; };
+		87F1458A81367D40587C2738 /* Pods_hachatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE1F99B00A694341DFE10D1 /* Pods_hachatTests.framework */; };
+		DFAF04271DC90B7600946598 /* Hamessage.proto.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAF04261DC90B7600946598 /* Hamessage.proto.swift */; };
+		DFE284831DC3AF6E000E8C09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE284821DC3AF6E000E8C09 /* AppDelegate.swift */; };
+		DFE284851DC3AF6E000E8C09 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE284841DC3AF6E000E8C09 /* ViewController.swift */; };
+		DFE2848A1DC3AF6E000E8C09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE284891DC3AF6E000E8C09 /* Assets.xcassets */; };
+		DFE2848D1DC3AF6E000E8C09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFE2848B1DC3AF6E000E8C09 /* LaunchScreen.storyboard */; };
+		DFE284981DC3AF6E000E8C09 /* hachatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE284971DC3AF6E000E8C09 /* hachatTests.swift */; };
+		DFE284A51DC50476000E8C09 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE284A41DC50476000E8C09 /* ChatLogController.swift */; };
+		DFE284A71DC6D4B6000E8C09 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE284A61DC6D4B5000E8C09 /* ChatMessageCell.swift */; };
+		DFE284AA1DC6FCB3000E8C09 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE284A91DC6FCB3000E8C09 /* Message.swift */; };
+		DFE284B21DC8CDC5000E8C09 /* FBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE284B11DC8CDC5000E8C09 /* FBHelper.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DFE284941DC3AF6E000E8C09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DFE284771DC3AF6D000E8C09 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DFE2847E1DC3AF6D000E8C09;
+			remoteInfo = hachat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		515690B0CE71EBA6AD35496F /* Pods-hachat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hachat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hachat/Pods-hachat.debug.xcconfig"; sourceTree = "<group>"; };
+		79F7E9207A2EA1C23C6D2944 /* Pods-hachatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hachatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hachatTests/Pods-hachatTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7FE1F99B00A694341DFE10D1 /* Pods_hachatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hachatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EE9F8929870645CD2D48CA1 /* Pods-hachatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hachatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-hachatTests/Pods-hachatTests.release.xcconfig"; sourceTree = "<group>"; };
+		B2FC599279E4DFB164A9F4C9 /* Pods_hachat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hachat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFAF04261DC90B7600946598 /* Hamessage.proto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hamessage.proto.swift; sourceTree = "<group>"; };
+		DFE2847F1DC3AF6D000E8C09 /* hachat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hachat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFE284821DC3AF6E000E8C09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DFE284841DC3AF6E000E8C09 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DFE284891DC3AF6E000E8C09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DFE2848C1DC3AF6E000E8C09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DFE2848E1DC3AF6E000E8C09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DFE284931DC3AF6E000E8C09 /* hachatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hachatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFE284971DC3AF6E000E8C09 /* hachatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hachatTests.swift; sourceTree = "<group>"; };
+		DFE284991DC3AF6E000E8C09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DFE284A41DC50476000E8C09 /* ChatLogController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
+		DFE284A61DC6D4B5000E8C09 /* ChatMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
+		DFE284A91DC6FCB3000E8C09 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		DFE284AF1DC797E7000E8C09 /* hachat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = hachat.entitlements; sourceTree = "<group>"; };
+		DFE284B11DC8CDC5000E8C09 /* FBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBHelper.swift; sourceTree = "<group>"; };
+		F10FDD7C07AB656B6500D856 /* Pods-hachat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hachat.release.xcconfig"; path = "Pods/Target Support Files/Pods-hachat/Pods-hachat.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DFE2847C1DC3AF6D000E8C09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2976787D80EC9AD66A0AE7BA /* Pods_hachat.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFE284901DC3AF6E000E8C09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87F1458A81367D40587C2738 /* Pods_hachatTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		88EB2E118FB87E3A57FFE3CB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B2FC599279E4DFB164A9F4C9 /* Pods_hachat.framework */,
+				7FE1F99B00A694341DFE10D1 /* Pods_hachatTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DFE284761DC3AF6D000E8C09 = {
+			isa = PBXGroup;
+			children = (
+				DFE284811DC3AF6D000E8C09 /* hachat */,
+				DFE284961DC3AF6E000E8C09 /* hachatTests */,
+				DFE284801DC3AF6D000E8C09 /* Products */,
+				F35D10C3659E7002F09240CF /* Pods */,
+				88EB2E118FB87E3A57FFE3CB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		DFE284801DC3AF6D000E8C09 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DFE2847F1DC3AF6D000E8C09 /* hachat.app */,
+				DFE284931DC3AF6E000E8C09 /* hachatTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DFE284811DC3AF6D000E8C09 /* hachat */ = {
+			isa = PBXGroup;
+			children = (
+				DFE284B01DC8CDA4000E8C09 /* Helper */,
+				DFE284AF1DC797E7000E8C09 /* hachat.entitlements */,
+				DFE284AC1DC6FFAE000E8C09 /* View */,
+				DFE284AB1DC6FF9A000E8C09 /* Controller */,
+				DFE284A81DC6FCA1000E8C09 /* Model */,
+				DFE284821DC3AF6E000E8C09 /* AppDelegate.swift */,
+				DFE284891DC3AF6E000E8C09 /* Assets.xcassets */,
+				DFE2848B1DC3AF6E000E8C09 /* LaunchScreen.storyboard */,
+				DFE2848E1DC3AF6E000E8C09 /* Info.plist */,
+			);
+			path = hachat;
+			sourceTree = "<group>";
+		};
+		DFE284961DC3AF6E000E8C09 /* hachatTests */ = {
+			isa = PBXGroup;
+			children = (
+				DFE284971DC3AF6E000E8C09 /* hachatTests.swift */,
+				DFE284991DC3AF6E000E8C09 /* Info.plist */,
+			);
+			path = hachatTests;
+			sourceTree = "<group>";
+		};
+		DFE284A81DC6FCA1000E8C09 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DFAF04261DC90B7600946598 /* Hamessage.proto.swift */,
+				DFE284A91DC6FCB3000E8C09 /* Message.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		DFE284AB1DC6FF9A000E8C09 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DFE284841DC3AF6E000E8C09 /* ViewController.swift */,
+				DFE284A41DC50476000E8C09 /* ChatLogController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		DFE284AC1DC6FFAE000E8C09 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DFE284A61DC6D4B5000E8C09 /* ChatMessageCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		DFE284B01DC8CDA4000E8C09 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				DFE284B11DC8CDC5000E8C09 /* FBHelper.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		F35D10C3659E7002F09240CF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				515690B0CE71EBA6AD35496F /* Pods-hachat.debug.xcconfig */,
+				F10FDD7C07AB656B6500D856 /* Pods-hachat.release.xcconfig */,
+				79F7E9207A2EA1C23C6D2944 /* Pods-hachatTests.debug.xcconfig */,
+				9EE9F8929870645CD2D48CA1 /* Pods-hachatTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DFE2847E1DC3AF6D000E8C09 /* hachat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DFE2849C1DC3AF6E000E8C09 /* Build configuration list for PBXNativeTarget "hachat" */;
+			buildPhases = (
+				1C988228C335EC87FFA0E745 /* 📦 Check Pods Manifest.lock */,
+				DFE2847B1DC3AF6D000E8C09 /* Sources */,
+				DFE2847C1DC3AF6D000E8C09 /* Frameworks */,
+				DFE2847D1DC3AF6D000E8C09 /* Resources */,
+				A92F4C4F5F2A8B0013E6C9AC /* 📦 Embed Pods Frameworks */,
+				2817FC82F18F4C88FBF5CE11 /* 📦 Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = hachat;
+			productName = hachat;
+			productReference = DFE2847F1DC3AF6D000E8C09 /* hachat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DFE284921DC3AF6E000E8C09 /* hachatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DFE2849F1DC3AF6E000E8C09 /* Build configuration list for PBXNativeTarget "hachatTests" */;
+			buildPhases = (
+				200534538F85430EA87BAE8E /* 📦 Check Pods Manifest.lock */,
+				DFE2848F1DC3AF6E000E8C09 /* Sources */,
+				DFE284901DC3AF6E000E8C09 /* Frameworks */,
+				DFE284911DC3AF6E000E8C09 /* Resources */,
+				FBD54CDF3A08EF11F80F540F /* 📦 Embed Pods Frameworks */,
+				A0F75BC17D18F8E7160AE010 /* 📦 Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DFE284951DC3AF6E000E8C09 /* PBXTargetDependency */,
+			);
+			name = hachatTests;
+			productName = hachatTests;
+			productReference = DFE284931DC3AF6E000E8C09 /* hachatTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DFE284771DC3AF6D000E8C09 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = J40;
+				TargetAttributes = {
+					DFE2847E1DC3AF6D000E8C09 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 94P66V8Y5Q;
+						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
+					DFE284921DC3AF6E000E8C09 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 94P66V8Y5Q;
+						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
+						TestTargetID = DFE2847E1DC3AF6D000E8C09;
+					};
+				};
+			};
+			buildConfigurationList = DFE2847A1DC3AF6D000E8C09 /* Build configuration list for PBXProject "hachat" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DFE284761DC3AF6D000E8C09;
+			productRefGroup = DFE284801DC3AF6D000E8C09 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DFE2847E1DC3AF6D000E8C09 /* hachat */,
+				DFE284921DC3AF6E000E8C09 /* hachatTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DFE2847D1DC3AF6D000E8C09 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFE2848D1DC3AF6E000E8C09 /* LaunchScreen.storyboard in Resources */,
+				DFE2848A1DC3AF6E000E8C09 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFE284911DC3AF6E000E8C09 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1C988228C335EC87FFA0E745 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		200534538F85430EA87BAE8E /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2817FC82F18F4C88FBF5CE11 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hachat/Pods-hachat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0F75BC17D18F8E7160AE010 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hachatTests/Pods-hachatTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A92F4C4F5F2A8B0013E6C9AC /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hachat/Pods-hachat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBD54CDF3A08EF11F80F540F /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hachatTests/Pods-hachatTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DFE2847B1DC3AF6D000E8C09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFE284A51DC50476000E8C09 /* ChatLogController.swift in Sources */,
+				DFE284B21DC8CDC5000E8C09 /* FBHelper.swift in Sources */,
+				DFE284A71DC6D4B6000E8C09 /* ChatMessageCell.swift in Sources */,
+				DFE284AA1DC6FCB3000E8C09 /* Message.swift in Sources */,
+				DFAF04271DC90B7600946598 /* Hamessage.proto.swift in Sources */,
+				DFE284851DC3AF6E000E8C09 /* ViewController.swift in Sources */,
+				DFE284831DC3AF6E000E8C09 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFE2848F1DC3AF6E000E8C09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFE284981DC3AF6E000E8C09 /* hachatTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DFE284951DC3AF6E000E8C09 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DFE2847E1DC3AF6D000E8C09 /* hachat */;
+			targetProxy = DFE284941DC3AF6E000E8C09 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DFE2848B1DC3AF6E000E8C09 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DFE2848C1DC3AF6E000E8C09 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DFE2849A1DC3AF6E000E8C09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DFE2849B1DC3AF6E000E8C09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DFE2849D1DC3AF6E000E8C09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 515690B0CE71EBA6AD35496F /* Pods-hachat.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = hachat/hachat.entitlements;
+				DEVELOPMENT_TEAM = 94P66V8Y5Q;
+				INFOPLIST_FILE = hachat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.j40.hachat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		DFE2849E1DC3AF6E000E8C09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F10FDD7C07AB656B6500D856 /* Pods-hachat.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = hachat/hachat.entitlements;
+				DEVELOPMENT_TEAM = 94P66V8Y5Q;
+				INFOPLIST_FILE = hachat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.j40.hachat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		DFE284A01DC3AF6E000E8C09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79F7E9207A2EA1C23C6D2944 /* Pods-hachatTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 94P66V8Y5Q;
+				INFOPLIST_FILE = hachatTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.J40.hachatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hachat.app/hachat";
+			};
+			name = Debug;
+		};
+		DFE284A11DC3AF6E000E8C09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EE9F8929870645CD2D48CA1 /* Pods-hachatTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 94P66V8Y5Q;
+				INFOPLIST_FILE = hachatTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.J40.hachatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hachat.app/hachat";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DFE2847A1DC3AF6D000E8C09 /* Build configuration list for PBXProject "hachat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DFE2849A1DC3AF6E000E8C09 /* Debug */,
+				DFE2849B1DC3AF6E000E8C09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DFE2849C1DC3AF6E000E8C09 /* Build configuration list for PBXNativeTarget "hachat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DFE2849D1DC3AF6E000E8C09 /* Debug */,
+				DFE2849E1DC3AF6E000E8C09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DFE2849F1DC3AF6E000E8C09 /* Build configuration list for PBXNativeTarget "hachatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DFE284A01DC3AF6E000E8C09 /* Debug */,
+				DFE284A11DC3AF6E000E8C09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DFE284771DC3AF6D000E8C09 /* Project object */;
+}

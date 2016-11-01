@@ -1,0 +1,6 @@
+framework module Pods_hachat {
+  umbrella header "Pods-hachat-umbrella.h"
+
+  export *
+  module * { export * }
+}
