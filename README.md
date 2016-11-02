@@ -1,9 +1,9 @@
-# Ha chat for ios
+# Ha! for ios
 ![hachat](https://github.com/atjoneswang/hachatios/raw/master/hachat/Assets.xcassets/AppIcon.appiconset/Icon-60%402x.png) 
 
 使用WebSocket開發具備聊天室功能的即時通訊app  
 
-利用WebSocket跟 Ha chat server溝通，傳送即時資料。將資料利用protocol buffers打包後經由web socket傳送到server端。
+利用WebSocket跟 Ha server溝通，傳送即時資料。將資料利用protocol buffers打包後經由web socket傳送到server端。
 
 # Requirement
  - iOS 10
