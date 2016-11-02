@@ -1,5 +1,5 @@
 # Ha chat for ios
-
+![hachat](https://github.com/atjoneswang/hachatios/raw/master/hachat/Assets.xcassets/AppIcon.appiconset/Icon-60%402x.png) 
 
 使用WebSocket開發具備聊天室功能的即時通訊app  
 
