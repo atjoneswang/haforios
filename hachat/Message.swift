@@ -12,12 +12,14 @@ class Message {
     var fromId: String?
     var text: String?
     var textTime: Date?
+    var profileImage: String?
     
     init(){}
     
-    init(fromId: String, msg: String) {
+    init(fromId: String, msg: String, img: String) {
         self.fromId = fromId
         self.text = msg
         self.textTime = Date()
+        self.profileImage = img
     }
 }

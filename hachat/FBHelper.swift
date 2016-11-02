@@ -34,3 +34,11 @@ func getFBProfile() {
         
     }
 }
+
+func getFBName() -> String {
+    return UserDefaults.standard.string(forKey: "username")!
+}
+
+func getFBCover() -> String {
+    return UserDefaults.standard.string(forKey: "cover")!
+}

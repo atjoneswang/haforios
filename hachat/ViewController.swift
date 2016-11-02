@@ -16,6 +16,7 @@ class ViewController: UIViewController{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getFBProfile()
+        
     }
     
     override func viewDidLoad() {
@@ -28,7 +29,7 @@ class ViewController: UIViewController{
         view.addSubview(loginButton)
         view.backgroundColor = UIColor.white
         
-        navigationItem.title = "Ha Chat"
+        navigationItem.title = "Ha!"
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "chat", style: .plain, target: self, action: #selector(joinChat))
         
@@ -47,6 +48,7 @@ extension ViewController: LoginButtonDelegate {
     
     func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
         getFBProfile()
+        
     }
     
     func joinChat() {
@@ -55,8 +57,6 @@ extension ViewController: LoginButtonDelegate {
             let chatlog = ChatLogController(collectionViewLayout: layout)
             navigationController?.pushViewController(chatlog, animated: true)
         }
-        
-        
     }
     
 }

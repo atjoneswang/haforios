@@ -43,10 +43,20 @@ class ChatMessageCell: UICollectionViewCell {
     let bubbleView: UIView = {
         let view = UIView()
         view.backgroundColor = ChatMessageCell.blueBackgroundColor
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = 5
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.masksToBounds = true
         return view
+    }()
+    
+    let profileImage: UIImageView = {
+        let image = UIImageView()
+        image.layer.cornerRadius = 14
+        image.layer.masksToBounds = true
+        image.clipsToBounds = true
+        image.contentMode = .scaleAspectFill
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
     }()
     
     var bubbleViewWidthAnchor: NSLayoutConstraint?
@@ -56,12 +66,18 @@ class ChatMessageCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addSubview(profileImage)
         addSubview(bubbleView)
+        
+        profileImage.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 6).isActive = true
+        profileImage.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        profileImage.widthAnchor.constraint(equalToConstant: 28).isActive = true
+        profileImage.heightAnchor.constraint(equalToConstant: 28).isActive = true
         
         bubbleViewRightAnchor = bubbleView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8)
         bubbleViewRightAnchor?.isActive = true
         
-        bubbleViewLeftAnchor = bubbleView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8)
+        bubbleViewLeftAnchor = bubbleView.leftAnchor.constraint(equalTo: profileImage.rightAnchor, constant: 8)
         //bubbleViewLeftAnchor?.isActive = true
         
         

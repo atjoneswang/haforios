@@ -3,7 +3,7 @@
 
 使用WebSocket開發具備除了傳Ha還可以打點其他東西的即時通訊app  
 
-利用WebSocket跟 Ha chat server溝通，傳送即時資料。將資料利用protocol buffers打包後經由WebSocket傳送到server端。
+利用WebSocket跟 Ha! server溝通，傳送即時資料。將資料利用protocol buffers打包後經由WebSocket傳送到server端。
 
 # Requirement
  - iOS 10

@@ -8,10 +8,11 @@
 
 import UIKit
 import Starscream
+import Kingfisher
 
 class ChatLogController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout {
-    //ws://127.0.0.1:8080 wss://hachatserver.herokuapp.com/hachat
-    var socket = WebSocket(url: URL(string: "ws://127.0.0.1:8080/hachat")!)
+    
+    var socket = WebSocket(url: URL(string: "wss://hachatserver.herokuapp.com/hachat")!)
     
     lazy var inputContainerView: UIView = {
         let containerView = UIView()
@@ -19,23 +20,21 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.backgroundColor = UIColor.white
         
-        let sendButton = UIButton(type: .system)
-        sendButton.setTitle("Send", for: .normal)
-        sendButton.translatesAutoresizingMaskIntoConstraints = false
         
-        containerView.addSubview(sendButton)
         
-        sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
-        sendButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-        sendButton.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
-        sendButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        sendButton.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
+        containerView.addSubview(self.sendButton)
+        
+        self.sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
+        self.sendButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        self.sendButton.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
+        self.sendButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        self.sendButton.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         
         
         containerView.addSubview(self.inputTextfield)
         
         self.inputTextfield.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 8).isActive = true
-        self.inputTextfield.rightAnchor.constraint(equalTo: sendButton.leftAnchor).isActive = true
+        self.inputTextfield.rightAnchor.constraint(equalTo: self.sendButton.leftAnchor).isActive = true
         self.inputTextfield.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         self.inputTextfield.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
         
@@ -53,6 +52,14 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         return containerView
     }()
     
+    let sendButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Send", for: .normal)
+        button.isEnabled = false
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     lazy var inputTextfield: UITextField = {
         let textfield = UITextField()
         textfield.placeholder = "Enter message.."
@@ -62,6 +69,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     }()
     
     var messages = [Message]()
+    //var haMessages = [Hamessage]()
     
     let cellId = "cellId"
     
@@ -73,11 +81,12 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         socket.disconnect()
+        NotificationCenter.default.removeObserver(self)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Chat Log"
+        navigationItem.title = "Ha Chat"
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.alwaysBounceVertical = true
@@ -85,19 +94,13 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         
         collectionView?.keyboardDismissMode = .interactive
         
-        
-        appendMessages()
         setupKeyboardObservers()
     }
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         inputContainerView.resignFirstResponder()
     }
-    func appendMessages() {
-        for index in 1...10 {
-            messages.append(Message(fromId: "Jones test", msg: "message \(index)"))
-        }
-    }
+    
     
     override var canBecomeFirstResponder: Bool {
         return true
@@ -111,6 +114,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     
     func setupKeyboardObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardDidShow), name: Notification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleButton), name: Notification.Name.UITextFieldTextDidChange, object: nil)
     }
     func handleKeyboardDidShow(notification: Notification) {
         if messages.count > 0 {
@@ -119,21 +123,67 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         }
     }
     func handleSend() {
-        let message = Message(fromId: "", msg: inputTextfield.text!)
-        messages.insert(message, at: messages.count)
-        inputTextfield.text = ""
+        if inputTextfield.text! != "" {
+            let msgBuilder = Hamessage.Builder()
+            msgBuilder.event = "chat"
+            msgBuilder.name = getFBName()
+            msgBuilder.text = inputTextfield.text!
+            msgBuilder.profileimage = getFBCover()
+            
+            do {
+                let msgdata = try msgBuilder.build().data()
+                socket.write(data: msgdata)
+            }catch{
+                
+            }
+            
+            inputTextfield.text = ""
+        }
+    }
+    
+    func updateCollectionView() {
         let indexptah = IndexPath(item: messages.count-1, section: 0)
-        
-        
         collectionView?.performBatchUpdates({
             self.collectionView?.insertItems(at: [indexptah])
         }, completion: nil)
         collectionView?.scrollToItem(at: indexptah, at: .bottom, animated: true)
     }
     
+    func handleButton() {
+        if (inputTextfield.text?.characters.count)! > 0 {
+            sendButton.isEnabled = true
+        }else {
+            sendButton.isEnabled = false
+        }
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         handleSend()
         return true
+    }
+    
+    func setupCell(cell: ChatMessageCell, message: Message) {
+        if message.fromId! == getFBName() {
+            cell.bubbleViewRightAnchor?.isActive = true
+            cell.bubbleViewLeftAnchor?.isActive = false
+            cell.bubbleView.backgroundColor = ChatMessageCell.blueBackgroundColor
+            cell.textView.textColor = UIColor.white
+            cell.profileImage.isHidden = true
+        } else{
+            cell.bubbleViewRightAnchor?.isActive = false
+            cell.bubbleViewLeftAnchor?.isActive = true
+            cell.bubbleView.backgroundColor = ChatMessageCell.grayBackgroundColor
+            cell.textView.textColor = UIColor.black
+            cell.profileImage.isHidden = false
+            let url = URL(string: message.profileImage!)
+            cell.profileImage.kf.setImage(with: url)
+        }
+    }
+    
+    func estimateFrameForText(text: String) -> CGRect {
+        let size = CGSize(width: 200, height: 1000)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)], context: nil)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -166,31 +216,19 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         return CGSize(width: width, height: height)
     }
     
-    func setupCell(cell: ChatMessageCell, message: Message) {
-        if message.fromId!.isEmpty {
-            cell.bubbleViewRightAnchor?.isActive = true
-            cell.bubbleViewLeftAnchor?.isActive = false
-            cell.bubbleView.backgroundColor = ChatMessageCell.blueBackgroundColor
-            cell.textView.textColor = UIColor.white
-        } else{
-            cell.bubbleViewRightAnchor?.isActive = false
-            cell.bubbleViewLeftAnchor?.isActive = true
-            cell.bubbleView.backgroundColor = ChatMessageCell.grayBackgroundColor
-            cell.textView.textColor = UIColor.black
-        }
-    }
-    
-    func estimateFrameForText(text: String) -> CGRect {
-        let size = CGSize(width: 200, height: 1000)
-        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)], context: nil)
-    }
 }
 extension ChatLogController: WebSocketDelegate, WebSocketPongDelegate {
     func websocketDidConnect(socket: WebSocket) {
         let msgBuilder = Hamessage.Builder()
         msgBuilder.event = "join"
-        msgBuilder.name = "Jones"
+        msgBuilder.name = getFBName()
+        
+        do {
+            let msgbuild = try msgBuilder.build()
+            socket.write(data: msgbuild.data())
+        }catch {
+            
+        }
         
         print("websocket is connected")
     }
@@ -208,7 +246,17 @@ extension ChatLogController: WebSocketDelegate, WebSocketPongDelegate {
     }
     
     func websocketDidReceiveData(socket: WebSocket, data: Data) {
-        print("Received data: \(data.count)")
+        
+        do {
+            let newmsg = try Hamessage.parseFrom(data: data)
+            let message = Message(fromId: newmsg.name, msg: newmsg.text, img: newmsg.profileimage)
+            messages.insert(message, at: messages.count)
+            
+            updateCollectionView()
+        }catch{
+            
+        }
+        
     }
     
     func websocketDidReceivePong(socket: WebSocket, data: Data?) {

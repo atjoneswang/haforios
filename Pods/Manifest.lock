@@ -24,6 +24,7 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.16.0):
     - FBSDKCoreKit
+  - Kingfisher (3.1.3)
   - ProtocolBuffers-Swift (3.0.5)
   - Starscream (2.0.0)
 
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
   - FacebookShare
+  - Kingfisher (~> 3.0)
   - ProtocolBuffers-Swift
   - Starscream (~> 2.0)
 
@@ -42,9 +44,10 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 7a6baaed4a2b2a244ba253346713bdbc74df135b
   FBSDKLoginKit: 9a514a55a7d05190f64d4ef09502737588b5b561
   FBSDKShareKit: e81505de17fc0624cbaa87b83cccc9f2a786e6cb
+  Kingfisher: 007f5851c18c81e7cc106c9cbac1bafea1cce5dc
   ProtocolBuffers-Swift: 37da7132bd05a12d366c62a37ca7db2abf224d4d
   Starscream: 947c865596f0d6bb3f0203fee23228ed2d471468
 
-PODFILE CHECKSUM: 31aaa2957eb8c2fda6e2c6561cd7e2a481937b9f
+PODFILE CHECKSUM: e5f680e73feeac6b9867b6cac762bbb72c6a0a4d
 
 COCOAPODS: 1.0.0

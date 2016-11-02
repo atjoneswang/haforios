@@ -230,7 +230,6 @@
 				TargetAttributes = {
 					DFE2847E1DC3AF6D000E8C09 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 94P66V8Y5Q;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -521,7 +520,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = hachat/hachat.entitlements;
-				DEVELOPMENT_TEAM = 94P66V8Y5Q;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = hachat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.j40.hachat;
@@ -536,7 +535,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = hachat/hachat.entitlements;
-				DEVELOPMENT_TEAM = 94P66V8Y5Q;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = hachat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.j40.hachat;

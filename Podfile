@@ -11,7 +11,8 @@ target 'hachat' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'
-
+  pod 'Kingfisher', '~> 3.0'
+  
   target 'hachatTests' do
     inherit! :search_paths
     # Pods for testing
