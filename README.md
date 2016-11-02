@@ -1,17 +1,18 @@
-# Ha! for ios
+# Ha chat for ios
 ![hachat](https://github.com/atjoneswang/hachatios/raw/master/hachat/Assets.xcassets/AppIcon.appiconset/Icon-60%402x.png) 
 
-使用WebSocket開發具備聊天室功能的即時通訊app  
+使用WebSocket開發具備除了傳Ha還可以打點其他東西的即時通訊app  
 
-利用WebSocket跟 Ha server溝通，傳送即時資料。將資料利用protocol buffers打包後經由web socket傳送到server端。
+利用WebSocket跟 Ha chat server溝通，傳送即時資料。將資料利用protocol buffers打包後經由WebSocket傳送到server端。
 
 # Requirement
  - iOS 10
  - Xcode 8
  - swift 3
+ - 
    
 
- # Library
+# Library
 
 * [Starscream](https://github.com/daltoniam/Starscream)
 * [Protocol Buffers](https://developers.google.com/protocol-buffers/)
