@@ -2,7 +2,4 @@ language: objective-c
 osx_image: xcode8
 xcode_workspace: hachat.xcworkspace 
 xcode_scheme: hachat
-xcode_sdk: iphoneos10.0
-before_install:
-  - brew update
-  - brew outdated xctool || brew upgrade xctool
+script: xcodebuild -workspace hachat.xcworkspace -scheme hachat -sdk iphonesimulator10.0 -destination "platform=iOS Simulator,name=iPhone 7"
