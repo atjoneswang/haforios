@@ -2,5 +2,3 @@ language: objective-c
 osx_image: xcode8
 xcode_workspace: hachat.xcworkspace 
 xcode_scheme: hachat
-xcode_sdk: iphonesimulator10.0
-script: xcodebuild -workspace hachat.xcworkspace -scheme hachat -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination "platform=iOS Simulator,name=iPhone 7"

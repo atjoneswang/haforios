@@ -10,7 +10,7 @@ import UIKit
 import Starscream
 import Kingfisher
 
-class ChatLogController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout {
+class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var socket = WebSocket(url: URL(string: "wss://hachatserver.herokuapp.com/hachat")!)
     
@@ -95,6 +95,8 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         collectionView?.keyboardDismissMode = .interactive
         
         setupKeyboardObservers()
+        
+        
     }
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -115,6 +117,9 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     func setupKeyboardObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardDidShow), name: Notification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleButton), name: Notification.Name.UITextFieldTextDidChange, object: nil)
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     func handleKeyboardDidShow(notification: Notification) {
         if messages.count > 0 {
@@ -122,11 +127,29 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
             self.collectionView?.scrollToItem(at: indexpath, at: .top, animated: true)
         }
     }
+    
+    func handleButton() {
+        if (inputTextfield.text?.trimmingCharacters(in: .whitespaces).characters.count)! > 0 {
+            sendButton.isEnabled = true
+        }else {
+            sendButton.isEnabled = false
+        }
+    }
+    
+    func dismissKeyboard() {
+        self.inputTextfield.resignFirstResponder()
+    }
+    
     func handleSend() {
+        if !socket.isConnected {
+            socket.connect()
+        }
+        print(getFBId())
         if inputTextfield.text! != "" {
             let msgBuilder = Hamessage.Builder()
             msgBuilder.event = "chat"
             msgBuilder.name = getFBName()
+            msgBuilder.email = getFBId()
             msgBuilder.text = inputTextfield.text!
             msgBuilder.profileimage = getFBCover()
             
@@ -149,21 +172,8 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         collectionView?.scrollToItem(at: indexptah, at: .bottom, animated: true)
     }
     
-    func handleButton() {
-        if (inputTextfield.text?.characters.count)! > 0 {
-            sendButton.isEnabled = true
-        }else {
-            sendButton.isEnabled = false
-        }
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        handleSend()
-        return true
-    }
-    
     func setupCell(cell: ChatMessageCell, message: Message) {
-        if message.fromId! == getFBName() {
+        if message.email! == getFBId() {
             cell.bubbleViewRightAnchor?.isActive = true
             cell.bubbleViewLeftAnchor?.isActive = false
             cell.bubbleView.backgroundColor = ChatMessageCell.blueBackgroundColor
@@ -217,12 +227,28 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     }
     
 }
+
+extension ChatLogController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if inputTextfield.text?.isEmpty != nil && (inputTextfield.text?.trimmingCharacters(in: .whitespaces).characters.count)! > 0 {
+            sendButton.isEnabled = true
+        }else{
+            sendButton.isEnabled = false
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        handleSend()
+        return true
+    }
+}
+
 extension ChatLogController: WebSocketDelegate, WebSocketPongDelegate {
     func websocketDidConnect(socket: WebSocket) {
         let msgBuilder = Hamessage.Builder()
         msgBuilder.event = "join"
         msgBuilder.name = getFBName()
-        
+        msgBuilder.email = getFBMail()
         do {
             let msgbuild = try msgBuilder.build()
             socket.write(data: msgbuild.data())
@@ -249,7 +275,7 @@ extension ChatLogController: WebSocketDelegate, WebSocketPongDelegate {
         
         do {
             let newmsg = try Hamessage.parseFrom(data: data)
-            let message = Message(fromId: newmsg.name, msg: newmsg.text, img: newmsg.profileimage)
+            let message = Message(fromId: newmsg.name, msg: newmsg.text, img: newmsg.profileimage, email: newmsg.email)
             messages.insert(message, at: messages.count)
             
             updateCollectionView()
