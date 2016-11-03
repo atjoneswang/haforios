@@ -1,8 +1,5 @@
 language: objective-c
 osx_image: xcode8
-rvm: 2.2.2
-before_install:
-- |
-    gem install cocoapods -v '1.0.1' --no-rdoc --no-ri --no-document --quiet
-    pod repo update
-script: xcodebuild -workspace hachat.xcworkspace -scheme hachat -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination "platform=iOS Simulator,name=iPhone 7"
+xcode_workspace: hachat.xcworkspace 
+xcode_scheme: hachat
+xcode_sdk： iphonesimulator10.0
