@@ -241,7 +241,6 @@
 					};
 					DFE284921DC3AF6E000E8C09 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 94P66V8Y5Q;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						TestTargetID = DFE2847E1DC3AF6D000E8C09;
@@ -551,7 +550,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 94P66V8Y5Q;
 				INFOPLIST_FILE = hachatTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.J40.hachatTests;
@@ -567,7 +565,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 94P66V8Y5Q;
 				INFOPLIST_FILE = hachatTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.J40.hachatTests;

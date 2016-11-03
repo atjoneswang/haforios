@@ -32,10 +32,6 @@ class ViewController: UIViewController{
         navigationItem.title = "Ha!"
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "chat", style: .plain, target: self, action: #selector(joinChat))
-        
-        
-        
-        
     }
     
     

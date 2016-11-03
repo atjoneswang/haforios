@@ -19,6 +19,7 @@ func getFBProfile() {
             switch result{
             case .success(let response):
                 let data = response.dictionaryValue
+                UserDefaults.standard.set(data?["id"], forKey: "fbid")
                 UserDefaults.standard.set(data?["name"], forKey: "username")
                 UserDefaults.standard.set(data?["email"], forKey: "email")
             
@@ -41,4 +42,12 @@ func getFBName() -> String {
 
 func getFBCover() -> String {
     return UserDefaults.standard.string(forKey: "cover")!
+}
+
+func getFBMail() -> String {
+    return UserDefaults.standard.string(forKey: "email")!
+}
+
+func getFBId() -> String {
+    return UserDefaults.standard.string(forKey: "fbid")!
 }
