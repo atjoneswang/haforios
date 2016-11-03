@@ -1,6 +1,8 @@
-[![Build Status](https://travis-ci.org/atjoneswang/haforios.svg?branch=master)](https://travis-ci.org/atjoneswang/haforios)
-
 # Ha! for ios
+
+[![Travis CI](https://travis-ci.org/atjoneswang/haforios.svg?branch=master)](https://travis-ci.org/atjoneswang/haforios)
+
+
 ![hachat](https://github.com/atjoneswang/hachatios/raw/master/hachat/Assets.xcassets/AppIcon.appiconset/Icon-60%402x.png) 
 
 使用WebSocket開發具備除了傳Ha還可以打點其他東西的即時通訊app  
