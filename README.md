@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/atjoneswang/haforios.svg?branch=master)](https://travis-ci.org/atjoneswang/haforios)
+
 # Ha! for ios
 ![hachat](https://github.com/atjoneswang/hachatios/raw/master/hachat/Assets.xcassets/AppIcon.appiconset/Icon-60%402x.png) 
 
