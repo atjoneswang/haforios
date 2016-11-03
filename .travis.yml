@@ -1,5 +1,5 @@
 language: objective-c
 osx_image: xcode8
-xcode_project: hachat.xcworkspace
+xcode_project: hachat.xcodeproj
 xcode_scheme: hachat
 xcode_sdk: iphonesimulator10.0
