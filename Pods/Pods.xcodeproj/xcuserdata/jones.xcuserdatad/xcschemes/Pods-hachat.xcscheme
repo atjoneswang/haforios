@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0810"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0E077DF6B89E6D220463B0186429D4C6"
+               BlueprintIdentifier = "FAD3181F989BB3F70BCA785A502ABB9B"
                BuildableName = "Pods_hachat.framework"
                BlueprintName = "Pods-hachat"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0E077DF6B89E6D220463B0186429D4C6"
+            BlueprintIdentifier = "FAD3181F989BB3F70BCA785A502ABB9B"
             BuildableName = "Pods_hachat.framework"
             BlueprintName = "Pods-hachat"
             ReferencedContainer = "container:Pods.xcodeproj">

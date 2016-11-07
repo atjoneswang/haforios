@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FontAwesome_swift
 
 class ChatMessageCell: UICollectionViewCell {
     
@@ -14,6 +15,7 @@ class ChatMessageCell: UICollectionViewCell {
         didSet {
             if message != nil {
                 textView.text = message?.text
+                textView.textColor = UIColor.white
                 self.fromId = message?.fromId
             }
             
@@ -24,14 +26,22 @@ class ChatMessageCell: UICollectionViewCell {
     static let blueBackgroundColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
     var fromId: String?
     let textView: UITextView = {
-       let tv = UITextView()
+        let tv = UITextView()
         //tv.text = "sample text"
         tv.font = UIFont.systemFont(ofSize: 16)
-        tv.textColor = UIColor.white
+        //tv.textColor = UIColor.white
         tv.backgroundColor = UIColor.clear
         tv.isEditable = false
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
+    }()
+    
+    let likeLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.fontAwesome(ofSize: 32)
+        label.text = String.fontAwesomeIcon("fa-thumbs-o-up")
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     let timeLabel: UILabel = {
@@ -63,6 +73,8 @@ class ChatMessageCell: UICollectionViewCell {
     var bubbleViewRightAnchor: NSLayoutConstraint?
     var bubbleViewLeftAnchor: NSLayoutConstraint?
     
+    var likeLabelRightAnchor:NSLayoutConstraint?
+    var likeLabelLeftAnchor:NSLayoutConstraint?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -94,6 +106,18 @@ class ChatMessageCell: UICollectionViewCell {
         textView.topAnchor.constraint(equalTo: bubbleView.topAnchor).isActive = true
         textView.rightAnchor.constraint(equalTo: bubbleView.rightAnchor).isActive = true
         textView.heightAnchor.constraint(equalTo: bubbleView.heightAnchor).isActive = true
+        
+        bubbleView.addSubview(likeLabel)
+        
+        likeLabel.topAnchor.constraint(equalTo: bubbleView.topAnchor).isActive = true
+        
+        likeLabelRightAnchor = likeLabel.rightAnchor.constraint(equalTo: bubbleView.rightAnchor, constant: 10)
+        likeLabelRightAnchor?.isActive = true
+        
+        likeLabelLeftAnchor = likeLabel.leftAnchor.constraint(equalTo: bubbleView.leftAnchor, constant: 10)
+        
+        likeLabel.heightAnchor.constraint(equalTo: bubbleView.heightAnchor).isActive = true
+        likeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {

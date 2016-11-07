@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0810"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "32B90E1BB4BC21BE19C16DFB706B6062"
+               BlueprintIdentifier = "D0F11B3797685674F6E560BF62474F3F"
                BuildableName = "ProtocolBuffers.framework"
                BlueprintName = "ProtocolBuffers-Swift"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "32B90E1BB4BC21BE19C16DFB706B6062"
+            BlueprintIdentifier = "D0F11B3797685674F6E560BF62474F3F"
             BuildableName = "ProtocolBuffers.framework"
             BlueprintName = "ProtocolBuffers-Swift"
             ReferencedContainer = "container:Pods.xcodeproj">

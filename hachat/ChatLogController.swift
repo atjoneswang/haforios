@@ -9,10 +9,13 @@
 import UIKit
 import Starscream
 import Kingfisher
+import FontAwesome_swift
 
 class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var socket = WebSocket(url: URL(string: "wss://hachatserver.herokuapp.com/hachat")!)
+    private let socket = WebSocket(url: URL(string: "wss://hachatserver.herokuapp.com/hachat")!)
+    
+    static let haText = "[[HA]]"
     
     lazy var inputContainerView: UIView = {
         let containerView = UIView()
@@ -21,26 +24,38 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
         containerView.backgroundColor = UIColor.white
         
         
+        let uploadImageButton = UIButton(type: UIButtonType.system)
+        uploadImageButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 26)
+        uploadImageButton.setTitle(String.fontAwesomeIcon("fa-picture-o"), for: .normal)
+        uploadImageButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        containerView.addSubview(uploadImageButton)
+        uploadImageButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 3).isActive = true
+        uploadImageButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        uploadImageButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        uploadImageButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        uploadImageButton.tintColor = UIColor.darkGray
+        
         
         containerView.addSubview(self.sendButton)
         
         self.sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
         self.sendButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         self.sendButton.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
-        self.sendButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        self.sendButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
         self.sendButton.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         
         
         containerView.addSubview(self.inputTextfield)
         
-        self.inputTextfield.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 8).isActive = true
+        self.inputTextfield.leftAnchor.constraint(equalTo: uploadImageButton.rightAnchor, constant: 2).isActive = true
         self.inputTextfield.rightAnchor.constraint(equalTo: self.sendButton.leftAnchor).isActive = true
         self.inputTextfield.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         self.inputTextfield.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
         
         
         let separatorLineView = UIView()
-        separatorLineView.backgroundColor = UIColor.black
+        separatorLineView.backgroundColor = UIColor.gray
         separatorLineView.translatesAutoresizingMaskIntoConstraints = false
         
         containerView.addSubview(separatorLineView)
@@ -54,9 +69,11 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
     
     let sendButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Send", for: .normal)
-        button.isEnabled = false
+        button.titleLabel?.font = UIFont.fontAwesome(ofSize: 24)
+        button.setTitle(String.fontAwesomeIcon("fa-thumbs-o-up"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = UIColor.darkGray
+        button.tag = 101
         return button
     }()
     
@@ -130,9 +147,12 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
     
     func handleButton() {
         if (inputTextfield.text?.trimmingCharacters(in: .whitespaces).characters.count)! > 0 {
-            sendButton.isEnabled = true
+            sendButton.setTitle(String.fontAwesomeIcon("fa-hand-pointer-o"), for: .normal)
+            sendButton.tag = 100
         }else {
-            sendButton.isEnabled = false
+            
+            sendButton.setTitle(String.fontAwesomeIcon("fa-thumbs-o-up"), for: .normal)
+            sendButton.tag = 101
         }
     }
     
@@ -144,24 +164,38 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
         if !socket.isConnected {
             socket.connect()
         }
-        print(getFBId())
         if inputTextfield.text! != "" {
-            let msgBuilder = Hamessage.Builder()
-            msgBuilder.event = "chat"
-            msgBuilder.name = getFBName()
-            msgBuilder.email = getFBId()
-            msgBuilder.text = inputTextfield.text!
-            msgBuilder.profileimage = getFBCover()
             
-            do {
-                let msgdata = try msgBuilder.build().data()
-                socket.write(data: msgdata)
-            }catch{
-                
-            }
+            
+            sendMessage(inputTextfield.text!)
             
             inputTextfield.text = ""
+        }else{
+            let tag = sendButton.tag
+            
+            if tag == 101 {
+                sendMessage(ChatLogController.haText)
+            }
         }
+    }
+    
+    private func sendMessage(_ text: String) {
+        do {
+            let msgdata = try createMessage(text)
+            socket.write(data: msgdata)
+        }catch{
+            
+        }
+    }
+    
+    private func createMessage(_ text: String) throws -> Data{
+        let msgBuilder = Hamessage.Builder()
+        msgBuilder.event = "chat"
+        msgBuilder.name = getFBName()
+        msgBuilder.email = getFBId()
+        msgBuilder.text = text
+        msgBuilder.profileimage = getFBCover()
+        return try msgBuilder.build().data()
     }
     
     func updateCollectionView() {
@@ -173,17 +207,50 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     func setupCell(cell: ChatMessageCell, message: Message) {
+        
+        if message.text == ChatLogController.haText {
+            cell.bubbleView.backgroundColor = UIColor.clear
+        }
+        
         if message.email! == getFBId() {
+            if message.text == ChatLogController.haText {
+                cell.bubbleView.backgroundColor = UIColor.clear
+                cell.textView.isHidden = true
+                cell.likeLabel.textColor = UIColor.blue
+                cell.likeLabel.isHidden = false
+                cell.likeLabelLeftAnchor?.isActive = false
+                cell.likeLabelRightAnchor?.isActive = true
+            }else{
+                cell.bubbleView.backgroundColor = ChatMessageCell.blueBackgroundColor
+                cell.textView.isHidden = false
+                cell.likeLabel.isHidden = true
+                cell.textView.textColor = UIColor.white
+            }
+            
             cell.bubbleViewRightAnchor?.isActive = true
             cell.bubbleViewLeftAnchor?.isActive = false
-            cell.bubbleView.backgroundColor = ChatMessageCell.blueBackgroundColor
-            cell.textView.textColor = UIColor.white
+            
+            
             cell.profileImage.isHidden = true
         } else{
+            if message.text == ChatLogController.haText {
+                cell.bubbleView.backgroundColor = UIColor.clear
+                cell.textView.isHidden = true
+                cell.likeLabel.textColor = UIColor.blue
+                cell.likeLabel.isHidden = false
+                cell.likeLabelLeftAnchor?.isActive = true
+                cell.likeLabelRightAnchor?.isActive = false
+            }else{
+                cell.bubbleView.backgroundColor = ChatMessageCell.grayBackgroundColor
+                cell.textView.isHidden = false
+                cell.likeLabel.isHidden = true
+                cell.textView.textColor = UIColor.black
+            }
+            
             cell.bubbleViewRightAnchor?.isActive = false
             cell.bubbleViewLeftAnchor?.isActive = true
-            cell.bubbleView.backgroundColor = ChatMessageCell.grayBackgroundColor
-            cell.textView.textColor = UIColor.black
+            
+            
             cell.profileImage.isHidden = false
             let url = URL(string: message.profileImage!)
             cell.profileImage.kf.setImage(with: url)
@@ -212,7 +279,12 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
         cell.message = message
         setupCell(cell: cell, message: message)
         let textWidth = estimateFrameForText(text: message.text!).width
-        cell.bubbleViewWidthAnchor?.constant = textWidth + 32
+        if message.text == ChatLogController.haText{
+            cell.bubbleViewWidthAnchor?.constant = 200
+        }else{
+            cell.bubbleViewWidthAnchor?.constant = textWidth + 32
+        }
+        
         return cell
     }
     
@@ -230,11 +302,7 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
 
 extension ChatLogController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if inputTextfield.text?.isEmpty != nil && (inputTextfield.text?.trimmingCharacters(in: .whitespaces).characters.count)! > 0 {
-            sendButton.isEnabled = true
-        }else{
-            sendButton.isEnabled = false
-        }
+        handleButton()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

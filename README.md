@@ -16,6 +16,9 @@
  - swift 3
  - 
    
+# New feature
+- Like button: 送人家一個讚
+
 
 # Library
 

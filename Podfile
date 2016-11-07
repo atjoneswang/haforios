@@ -12,7 +12,7 @@ target 'hachat' do
   pod 'FacebookLogin'
   pod 'FacebookShare'
   pod 'Kingfisher', '~> 3.0'
-  
+  pod 'FontAwesome.swift'
   target 'hachatTests' do
     inherit! :search_paths
     # Pods for testing
