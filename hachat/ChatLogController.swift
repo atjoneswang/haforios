@@ -35,7 +35,7 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
         uploadImageButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
         uploadImageButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         uploadImageButton.tintColor = UIColor.darkGray
-        
+        uploadImageButton.isHidden = true
         
         containerView.addSubview(self.sendButton)
         

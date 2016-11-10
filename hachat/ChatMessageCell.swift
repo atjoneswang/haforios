@@ -62,6 +62,8 @@ class ChatMessageCell: UICollectionViewCell {
     let profileImage: UIImageView = {
         let image = UIImageView()
         image.layer.cornerRadius = 14
+        image.layer.borderWidth = 1.5
+        image.layer.borderColor = UIColor.darkGray.cgColor
         image.layer.masksToBounds = true
         image.clipsToBounds = true
         image.contentMode = .scaleAspectFill
