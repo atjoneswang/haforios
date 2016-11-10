@@ -14,7 +14,7 @@
  - iOS 10
  - Xcode 8
  - swift 3
- - 
+ - cocoapods
    
 # New feature
 - Like button: 送人家一個讚
